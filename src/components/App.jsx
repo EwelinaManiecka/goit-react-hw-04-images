@@ -20,7 +20,7 @@ function App() {
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(Status.IDLE);
   const [showButton, setShowButton] = useState(false);
-  const [alertState] = useState(false);
+  const [alertState, setAlertState] = useState(false);
   const [showModal, setShowModal] = useState({
     show: false,
     img: null,
@@ -84,6 +84,7 @@ function App() {
     setShowButton(false);
     setShowModal(false);
     setStatus(Status.IDLE);
+    setAlertState(false);
   };
 
   const loadMoreImages = () => {
