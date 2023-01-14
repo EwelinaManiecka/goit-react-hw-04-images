@@ -62,7 +62,7 @@ function App() {
     }
 
     fetchImages();
-  }, [imageName, page]);
+  }, [imageName, page, alertState]);
 
   // componentDidUpdate(_, prevState) {
   //   const prevName = prevState.imageName;
