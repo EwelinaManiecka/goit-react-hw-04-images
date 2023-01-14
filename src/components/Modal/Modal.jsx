@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import style from './Modal.module.css';
 
 function Modal({ onClose }) {
-  const [showImg] = useState(null);
-  const [showAlt] = useState(null);
+  const [showImg] = useState();
+  const [showAlt] = useState();
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -38,8 +38,8 @@ function Modal({ onClose }) {
 Modal.propTypes = {
   onClick: PropTypes.func,
   onClose: PropTypes.func,
-  img: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
+  img: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 export default Modal;

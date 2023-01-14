@@ -20,10 +20,12 @@ function App() {
   const [page, setPage] = useState(1);
   const [status, setStatus] = useState(Status.IDLE);
   const [showButton, setShowButton] = useState(false);
-  const [showModal, setShowModal] = useState(false);
   const [alertState] = useState(false);
-  const [showImg, setShowImg] = useState(null);
-  const [showAlt, setShowAlt] = useState(null);
+  const [showModal, setShowModal] = useState({
+    show: false,
+    img: null,
+    alt: null,
+  });
 
   // state = {
   //   imageName: '',
@@ -81,8 +83,6 @@ function App() {
     setImages([]);
     setShowButton(false);
     setShowModal(false);
-    setShowImg(null);
-    setShowAlt(null);
     setStatus(Status.IDLE);
   };
 
@@ -95,7 +95,7 @@ function App() {
   };
 
   const handleModalAlt = e => {
-    setShowAlt(e);
+    setShowModal(e);
   };
 
   const toggleModal = () => {
@@ -119,7 +119,9 @@ function App() {
 
       {showButton && <Button onClick={loadMoreImages} />}
 
-      {showModal && <Modal onClose={toggleModal} img={showImg} alt={showAlt} />}
+      {showModal && (
+        <Modal onClose={toggleModal} img={showModal.img} alt={showModal.alt} />
+      )}
     </>
   );
 }
