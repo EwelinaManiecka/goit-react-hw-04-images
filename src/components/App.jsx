@@ -21,20 +21,11 @@ function App() {
   const [status, setStatus] = useState(Status.IDLE);
   const [showButton, setShowButton] = useState(false);
   const [alertState, setAlertState] = useState(false);
-  const [showModal, setShowModal] = useState({
+  const [modal, setModal] = useState({
     show: false,
     img: null,
     alt: null,
   });
-
-  // state = {
-  //   imageName: '',
-  //   images: [],
-  //   page: 1,
-  //   showButton: false,
-  //   status: Status.IDLE,
-  //   modal: { show: false, img: null, alt: null },
-  //   alertState: false,
 
   useEffect(() => {
     if (!imageName) {
@@ -64,16 +55,6 @@ function App() {
     fetchImages();
   }, [imageName, page, alertState]);
 
-  // componentDidUpdate(_, prevState) {
-  //   const prevName = prevState.imageName;
-  //   const nextName = this.state.imageName;
-
-  //   const prevPage = prevState.page;
-  //   const nextPage = this.state.page;
-
-  //   if (prevName !== nextName || prevPage !== nextPage) {
-  //     this.setState({ status: Status.PENDING, alertState: false });
-
   const handleFormSumbit = searchImage => {
     if (searchImage === imageName) {
       return;
@@ -82,7 +63,7 @@ function App() {
     setPage(1);
     setImages([]);
     setShowButton(false);
-    setShowModal(false);
+    setModal(false);
     setStatus(Status.IDLE);
     setAlertState(false);
   };
@@ -92,15 +73,15 @@ function App() {
   };
 
   const handleModalImage = e => {
-    setShowModal(e);
+    setModal(e);
   };
 
   const handleModalAlt = e => {
-    setShowModal(e);
+    setModal(e);
   };
 
   const toggleModal = () => {
-    setShowModal(!showModal);
+    setModal(!modal);
   };
 
   return (
@@ -111,7 +92,7 @@ function App() {
       {alertState && <h2>Try again</h2>}
       {images.length > 0 && (
         <ImageGallery
-          showModal={toggleModal}
+          modal={toggleModal}
           images={images}
           handleModalAlt={handleModalAlt}
           handleModalImage={handleModalImage}
@@ -120,8 +101,8 @@ function App() {
 
       {showButton && <Button onClick={loadMoreImages} />}
 
-      {showModal && (
-        <Modal onClose={toggleModal} img={showModal.img} alt={showModal.alt} />
+      {modal.show && (
+        <Modal onClose={toggleModal} img={modal.img} alt={modal.alt} />
       )}
     </>
   );

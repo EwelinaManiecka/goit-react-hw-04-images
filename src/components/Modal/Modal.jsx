@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import style from './Modal.module.css';
 
-function Modal({ onClose }) {
+const Modal = onClose => {
   const [showImg] = useState();
   const [showAlt] = useState();
 
@@ -33,7 +33,7 @@ function Modal({ onClose }) {
       </div>
     </div>
   );
-}
+};
 
 Modal.propTypes = {
   onClick: PropTypes.func,
