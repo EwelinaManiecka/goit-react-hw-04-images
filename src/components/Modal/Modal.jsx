@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import style from './Modal.module.css';
 
-const Modal = onClose => {
-  const [showImg] = useState();
-  const [showAlt] = useState();
+const Modal = props => {
+  const { onClose, img, alt } = props;
 
   useEffect(() => {
     const handleKeyDown = e => {
@@ -29,7 +28,7 @@ const Modal = onClose => {
   return (
     <div className={style.Overlay} onClick={handleBackdropClick}>
       <div className={style.Modal}>
-        <img src={showImg} alt={showAlt} />
+        <img src={img} alt={alt} />
       </div>
     </div>
   );

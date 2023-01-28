@@ -72,16 +72,28 @@ function App() {
     setPage(prevState => prevState.page + 1);
   };
 
-  const handleModalImage = e => {
-    setModal(e);
-  };
+  // const handleModalImage = () => {
+  //   setModal(e);
+  // };
 
-  const handleModalAlt = e => {
-    setModal(e);
-  };
+  // const handleModalAlt = e => {
+  //   setModal(e);
+  // };
 
-  const toggleModal = () => {
-    setModal(!modal);
+  const toggleModal = e => {
+    if (!modal.show) {
+      setModal({
+        show: true,
+        img: e.target.src,
+        alt: e.target.ale,
+      });
+    } else {
+      setModal({
+        show: false,
+        img: null,
+        alt: null,
+      });
+    }
   };
 
   return (
@@ -94,8 +106,7 @@ function App() {
         <ImageGallery
           modal={toggleModal}
           images={images}
-          handleModalAlt={handleModalAlt}
-          handleModalImage={handleModalImage}
+          showModal={toggleModal}
         />
       )}
 
