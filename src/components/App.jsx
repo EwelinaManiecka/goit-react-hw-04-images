@@ -72,14 +72,6 @@ function App() {
     setPage(prevState => prevState.page + 1);
   };
 
-  // const handleModalImage = () => {
-  //   setModal(e);
-  // };
-
-  // const handleModalAlt = e => {
-  //   setModal(e);
-  // };
-
   const toggleModal = e => {
     if (!modal.show) {
       setModal({
